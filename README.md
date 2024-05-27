@@ -3,7 +3,7 @@
 # JMusicBot_UKR
 
 [![Downloads](https://img.shields.io/github/downloads/jagrosh/MusicBot/total.svg)](https://github.com/MaximBayer/MusicBot_UA/releases)
-[![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/stargazers)
+[![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/MaximBayer/JMusicBot_UKR/stargazers)
 [![Release](https://img.shields.io/github/release/jagrosh/MusicBot.svg)](https://github.com/MaximBayer/MusicBot_UA/releases)
 [![License](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/MaximBayer/MusicBot_UA/blob/bayer/LICENSE)
 [![Discord](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
