@@ -40,10 +40,8 @@ import org.json.JSONTokener;
  */
 public class OtherUtil
 {
-    public final static String NEW_VERSION_AVAILABLE = "Доступна нова версія JMusicBot.!\n"
-                    + "Поточна версія: %s\n"
-                    + "Нова версія: %s\n\n"
-                    + "Будь ласка, відвідайте https://github.com/jagrosh/MusicBot/releases/latest щоб отримати останню версію.";
+    public final static String NEW_VERSION_AVAILABLE = "Дякуємо, що вибрали JMusicBot.!\n"
+                + "Слідкуйте за оновленнями за посиланням: https://github.com/MaximBayer/JMusicBot_UKR/releases щоб завжди бути в курсі останніх оновлень.";
     private final static String WINDOWS_INVALID_PATH = "c:\\windows\\system32\\";
     
     /**
@@ -163,16 +161,7 @@ public class OtherUtil
     
     public static void checkVersion(Prompt prompt)
     {
-        // Get current version number
-        String version = getCurrentVersion();
-        
-        // Check for new version
-        String latestVersion = getLatestVersion();
-        
-        if(latestVersion!=null && !latestVersion.equals(version))
-        {
-            prompt.alert(Prompt.Level.WARNING, "JMusicBot Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
-        }
+        prompt.alert(Prompt.Level.INFO, "JMusicBot", NEW_VERSION_AVAILABLE);
     }
     
     public static String getCurrentVersion()
@@ -224,7 +213,9 @@ public class OtherUtil
         ApplicationInfo info = jda.retrieveApplicationInfo().complete();
         if (info.isBotPublic())
             return "\"Public Bot\" is enabled. Using JMusicBot as a public bot is not supported. Please disable it in the "
-                    + "Developer Dashboard at https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot.";
+                    + "Developer Dashboard at https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot ."
+                    + "You may also need to disable all Installation Contexts at https://discord.com/developers/applications/" 
+                    + jda.getSelfUser().getId() + "/installation .";
 
         return null;
     }
