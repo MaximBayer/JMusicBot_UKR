@@ -67,11 +67,11 @@ public class SkipCmd extends MusicCommand
             int skippers = (int)event.getSelfMember().getVoiceState().getChannel().getMembers().stream()
                     .filter(m -> handler.getVotes().contains(m.getUser().getId())).count();
             int required = (int)Math.ceil(listeners * skipRatio);
-            msg += skippers + " votes, " + required + "/" + listeners + " needed]`";
+            msg += skippers + " запити, " + required + "/" + listeners + " необхідно]`";
             if(skippers>=required)
             {
-                msg += "\n" + event.getClient().getSuccess() + " Skipped **" + handler.getPlayer().getPlayingTrack().getInfo().title
-                    + "** " + (rm.getOwner() == 0L ? "(autoplay)" : "(requested by **" + FormatUtil.formatUsername(rm.user) + "**)");
+                msg += "\n" + event.getClient().getSuccess() + " Пропущено **" + handler.getPlayer().getPlayingTrack().getInfo().title
+                    + "** " + (rm.getOwner() == 0L ? "(автозапуск)" : "(запитано користувачем **" + FormatUtil.formatUsername(rm.user) + "**)");
                 handler.getPlayer().stopTrack();
             }
             event.reply(msg);

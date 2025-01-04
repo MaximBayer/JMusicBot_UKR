@@ -42,16 +42,16 @@ public class SkipratioCmd extends AdminCommand
             int val = Integer.parseInt(event.getArgs().endsWith("%") ? event.getArgs().substring(0,event.getArgs().length()-1) : event.getArgs());
             if( val < 0 || val > 100)
             {
-                event.replyError("The provided value must be between 0 and 100!");
+                event.replyError("Надане значення має бути в межах від 0 до 100!");
                 return;
             }
             Settings s = event.getClient().getSettingsFor(event.getGuild());
             s.setSkipRatio(val / 100.0);
-            event.replySuccess("Skip percentage has been set to `" + val + "%` of listeners on *" + event.getGuild().getName() + "*");
+            event.replySuccess("Процент пропуску встановлено на `" + val + "%` слухачів на *" + event.getGuild().getName() + "*");
         }
         catch(NumberFormatException ex)
         {
-            event.replyError("Please include an integer between 0 and 100 (default is 55). This number is the percentage of listening users that must vote to skip a song.");
+            event.replyError("Будь ласка, вкажіть ціле число в межах від 0 до 100 (за замовчуванням 55). Це число є відсотком слухачів, які повинні проголосувати за пропуск пісні.");
         }
     }
 }

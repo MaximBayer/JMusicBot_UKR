@@ -43,12 +43,12 @@ public class SetgameCmd extends OwnerCommand
     @Override
     protected void execute(CommandEvent event) 
     {
-        String title = event.getArgs().toLowerCase().startsWith("playing") ? event.getArgs().substring(7).trim() : event.getArgs();
+        String title = event.getArgs().toLowerCase().startsWith("виконується") ? event.getArgs().substring(7).trim() : event.getArgs();
         try
         {
             event.getJDA().getPresence().setActivity(title.isEmpty() ? null : Activity.playing(title));
             event.reply(event.getClient().getSuccess()+" **"+event.getSelfUser().getName()
-                    +"** is "+(title.isEmpty() ? "no longer playing anything." : "now playing `"+title+"`"));
+                    +"** зараз "+(title.isEmpty() ? "не відтворює нічого." : "відтворюється `"+title+"`"));
         }
         catch(Exception e)
         {
@@ -112,7 +112,7 @@ public class SetgameCmd extends OwnerCommand
             try
             {
                 event.getJDA().getPresence().setActivity(Activity.listening(title));
-                event.replySuccess("**"+event.getSelfUser().getName()+"** is now listening to `"+title+"`");
+                event.replySuccess("**"+event.getSelfUser().getName()+"** тепер слухає `"+title+"`");
             } catch(Exception e) {
                 event.reply(event.getClient().getError()+" Не вдалося встановити гру!");
             }
@@ -142,7 +142,7 @@ public class SetgameCmd extends OwnerCommand
             try
             {
                 event.getJDA().getPresence().setActivity(Activity.watching(title));
-                event.replySuccess("**"+event.getSelfUser().getName()+"** is now watching `"+title+"`");
+                event.replySuccess("**"+event.getSelfUser().getName()+"** тепер дивиться `"+title+"`");
             } catch(Exception e) {
                 event.reply(event.getClient().getError()+" Не вдалося встановити гру!");
             }

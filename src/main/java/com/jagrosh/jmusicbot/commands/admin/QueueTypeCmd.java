@@ -47,7 +47,7 @@ public class QueueTypeCmd extends AdminCommand
         if (args.isEmpty())
         {
             QueueType currentType = settings.getQueueType();
-            event.reply(currentType.getEmoji() + " Current queue type is: `" + currentType.getUserFriendlyName() + "`.");
+            event.reply(currentType.getEmoji() + " Поточний тип черги: `" + currentType.getUserFriendlyName() + "`.");
             return;
         }
 
@@ -57,7 +57,7 @@ public class QueueTypeCmd extends AdminCommand
         }
         catch (IllegalArgumentException e)
         {
-            event.replyError("Invalid queue type. Valid types are: [" + String.join("|", QueueType.getNames()) + "]");
+            event.replyError("Недійсний тип черги. Дійсні типи: [" + String.join("|", QueueType.getNames()) + "]");
             return;
         }
 
@@ -70,6 +70,6 @@ public class QueueTypeCmd extends AdminCommand
                 handler.setQueueType(value);
         }
 
-        event.reply(value.getEmoji() + " Queue type was set to `" + value.getUserFriendlyName() + "`.");
+        event.reply(value.getEmoji() + " Тип черги встановлено на `" + value.getUserFriendlyName() + "`.");
     }
 }

@@ -62,7 +62,7 @@ public class AutoplaylistCmd extends OwnerCommand
         {
             Settings settings = event.getClient().getSettingsFor(event.getGuild());
             settings.setDefaultPlaylist(pname);
-            event.reply(event.getClient().getSuccess()+" Стандартний список відтворення для **"+event.getGuild().getName()+"** is now `"+pname+"`");
+            event.reply(event.getClient().getSuccess()+" Стандартний список відтворення для **"+event.getGuild().getName()+"** тепер є `"+pname+"`");
         }
     }
 }

@@ -52,14 +52,14 @@ public class SeekCmd extends MusicCommand
         AudioTrack playingTrack = handler.getPlayer().getPlayingTrack();
         if (!playingTrack.isSeekable())
         {
-            event.replyError("This track is not seekable.");
+            event.replyError("Цей трек не підтримує перемотування.");
             return;
         }
 
 
         if (!DJCommand.checkDJPermission(event) && playingTrack.getUserData(RequestMetadata.class).getOwner() != event.getAuthor().getIdLong())
         {
-            event.replyError("You cannot seek **" + playingTrack.getInfo().title + "** because you didn't add it!");
+            event.replyError("Ви не можете перемотувати **" + playingTrack.getInfo().title + "** тому що ви не додали його!");
             return;
         }
 
@@ -67,7 +67,7 @@ public class SeekCmd extends MusicCommand
         TimeUtil.SeekTime seekTime = TimeUtil.parseTime(args);
         if (seekTime == null)
         {
-            event.replyError("Invalid seek! Expected format: " + arguments + "\nExamples: `1:02:23` `+1:10` `-90`, `1h10m`, `+90s`");
+            event.replyError("Невірний запит на перемотування! Очікуваний формат: " + arguments + "\nExamples: `1:02:23` `+1:10` `-90`, `1h10m`, `+90s`");
             return;
         }
 
@@ -77,7 +77,7 @@ public class SeekCmd extends MusicCommand
         long seekMilliseconds = seekTime.relative ? currentPosition + seekTime.milliseconds : seekTime.milliseconds;
         if (seekMilliseconds > trackDuration)
         {
-            event.replyError("Cannot seek to `" + TimeUtil.formatTime(seekMilliseconds) + "` because the current track is `" + TimeUtil.formatTime(trackDuration) + "` long!");
+            event.replyError("Не можна перемотувати на `" + TimeUtil.formatTime(seekMilliseconds) + "` тому що поточний трек занадто `" + TimeUtil.formatTime(trackDuration) + "` довгий!");
             return;
         }
         
@@ -87,10 +87,10 @@ public class SeekCmd extends MusicCommand
         }
         catch (Exception e)
         {
-            event.replyError("An error occurred while trying to seek: " + e.getMessage());
-            LOG.warn("Failed to seek track " + playingTrack.getIdentifier(), e);
+            event.replyError("Сталася помилка під час спроби перемотати: " + e.getMessage());
+            LOG.warn("Не вдалося перемотати трек " + playingTrack.getIdentifier(), e);
             return;
         }
-        event.replySuccess("Successfully seeked to `" + TimeUtil.formatTime(playingTrack.getPosition()) + "/" + TimeUtil.formatTime(playingTrack.getDuration()) + "`!");
+        event.replySuccess("Успішно перемотано на `" + TimeUtil.formatTime(playingTrack.getPosition()) + "/" + TimeUtil.formatTime(playingTrack.getDuration()) + "`!");
     }
 }

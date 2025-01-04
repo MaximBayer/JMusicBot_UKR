@@ -49,39 +49,39 @@ public class DebugCmd extends OwnerCommand
     protected void execute(CommandEvent event)
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("```\nSystem Properties:");
+        sb.append("```\nСистемні властивості:");
         for(String key: PROPERTIES)
             sb.append("\n  ").append(key).append(" = ").append(System.getProperty(key));
-        sb.append("\n\nJMusicBot Information:")
-                .append("\n  Version = ").append(OtherUtil.getCurrentVersion())
-                .append("\n  Owner = ").append(bot.getConfig().getOwnerId())
-                .append("\n  Prefix = ").append(bot.getConfig().getPrefix())
-                .append("\n  AltPrefix = ").append(bot.getConfig().getAltPrefix())
-                .append("\n  MaxSeconds = ").append(bot.getConfig().getMaxSeconds())
-                .append("\n  NPImages = ").append(bot.getConfig().useNPImages())
-                .append("\n  SongInStatus = ").append(bot.getConfig().getSongInStatus())
-                .append("\n  StayInChannel = ").append(bot.getConfig().getStay())
-                .append("\n  UseEval = ").append(bot.getConfig().useEval())
-                .append("\n  UpdateAlerts = ").append(bot.getConfig().useUpdateAlerts());
-        sb.append("\n\nDependency Information:")
-                .append("\n  JDA Version = ").append(JDAInfo.VERSION)
-                .append("\n  JDA-Utilities Version = ").append(JDAUtilitiesInfo.VERSION)
-                .append("\n  Lavaplayer Version = ").append(PlayerLibrary.VERSION);
+        sb.append("\n\nІнформація про JMusicBot:")
+                .append("\n  Версія = ").append(OtherUtil.getCurrentVersion())
+                .append("\n  Власник = ").append(bot.getConfig().getOwnerId())
+                .append("\n  Префікс = ").append(bot.getConfig().getPrefix())
+                .append("\n  Альтернативний префікс = ").append(bot.getConfig().getAltPrefix())
+                .append("\n  Макс. кількість секунд = ").append(bot.getConfig().getMaxSeconds())
+                .append("\n  Зображення для NP = ").append(bot.getConfig().useNPImages())
+                .append("\n  Пісня в статусі = ").append(bot.getConfig().getSongInStatus())
+                .append("\n  Залишатися в каналі = ").append(bot.getConfig().getStay())
+                .append("\n  Використовувати Eval = ").append(bot.getConfig().useEval())
+                .append("\n  Оповіщення про оновлення = ").append(bot.getConfig().useUpdateAlerts());
+        sb.append("\n\nІнформація про залежності:")
+                .append("\n  Версія JDA = ").append(JDAInfo.VERSION)
+                .append("\n  Версія JDA-Utilities = ").append(JDAUtilitiesInfo.VERSION)
+                .append("\n  Версія Lavaplayer = ").append(PlayerLibrary.VERSION);
         long total = Runtime.getRuntime().totalMemory() / 1024 / 1024;
         long used = total - (Runtime.getRuntime().freeMemory() / 1024 / 1024);
-        sb.append("\n\nRuntime Information:")
-                .append("\n  Total Memory = ").append(total)
-                .append("\n  Used Memory = ").append(used);
-        sb.append("\n\nDiscord Information:")
+        sb.append("\n\nІнформація про виконання:")
+                .append("\n  Загальна пам'ять = ").append(total)
+                .append("\n  Використана пам'ять = ").append(used);
+        sb.append("\n\nІнформація про Discord:")
                 .append("\n  ID = ").append(event.getJDA().getSelfUser().getId())
-                .append("\n  Guilds = ").append(event.getJDA().getGuildCache().size())
-                .append("\n  Users = ").append(event.getJDA().getUserCache().size());
+                .append("\n  Сервери = ").append(event.getJDA().getGuildCache().size())
+                .append("\n  Користувачі = ").append(event.getJDA().getUserCache().size());
         sb.append("\n```");
         
         if(event.isFromType(ChannelType.PRIVATE) 
                 || event.getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_ATTACH_FILES))
             event.getChannel().sendFile(sb.toString().getBytes(), "debug_information.txt").queue();
         else
-            event.reply("Debug Information: " + sb.toString());
+            event.reply("Інформація для налагодження: " + sb.toString());
     }
 }

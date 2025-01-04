@@ -77,7 +77,7 @@ public abstract class MusicCommand extends Command
             VoiceChannel afkChannel = userState.getGuild().getAfkChannel();
             if(afkChannel != null && afkChannel.equals(userState.getChannel()))
             {
-                event.replyError("You cannot use that command in an AFK channel!");
+                event.replyError("Ви не можете використовувати цю команду в каналі для AFK!");
                 return;
             }
 

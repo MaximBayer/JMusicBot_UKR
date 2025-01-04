@@ -72,10 +72,10 @@ public class PlayCmd extends MusicCommand
                 if(DJCommand.checkDJPermission(event))
                 {
                     handler.getPlayer().setPaused(false);
-                    event.replySuccess("Resumed **"+handler.getPlayer().getPlayingTrack().getInfo().title+"**.");
+                    event.replySuccess("Відновлено **"+handler.getPlayer().getPlayingTrack().getInfo().title+"**.");
                 }
                 else
-                    event.replyError("Only DJs can unpause the player!");
+                    event.replyError("Тільки DJ можуть зняти паузу з програвача!");
                 return;
             }
             StringBuilder builder = new StringBuilder(event.getClient().getWarning()+" Команди відтворення:\n");
@@ -89,7 +89,7 @@ public class PlayCmd extends MusicCommand
         String args = event.getArgs().startsWith("<") && event.getArgs().endsWith(">") 
                 ? event.getArgs().substring(1,event.getArgs().length()-1) 
                 : event.getArgs().isEmpty() ? event.getMessage().getAttachments().get(0).getUrl() : event.getArgs();
-        event.reply(loadingEmoji+" Loading... `["+args+"]`", m -> bot.getPlayerManager().loadItemOrdered(event.getGuild(), args, new ResultHandler(m,event,false)));
+        event.reply(loadingEmoji+" Завантаження... `["+args+"]`", m -> bot.getPlayerManager().loadItemOrdered(event.getGuild(), args, new ResultHandler(m,event,false)));
     }
     
     private class ResultHandler implements AudioLoadResultHandler
@@ -178,20 +178,20 @@ public class PlayCmd extends MusicCommand
                 if(playlist.getTracks().size() == 0)
                 {
                     m.editMessage(FormatUtil.filter(event.getClient().getWarning()+" Список відтворення "+(playlist.getName()==null ? "" : "(**"+playlist.getName()
-                            +"**) ")+" could not be loaded or contained 0 entries")).queue();
+                            +"**) ")+" не вдалося завантажити або він не містив жодного запису")).queue();
                 }
                 else if(count==0)
                 {
                     m.editMessage(FormatUtil.filter(event.getClient().getWarning()+" Усі записи у цьому списку відтворення "+(playlist.getName()==null ? "" : "(**"+playlist.getName()
-                            +"**) ")+"were longer than the allowed maximum (`"+bot.getConfig().getMaxTime()+"`)")).queue();
+                            +"**) ")+"були довшими за дозволений максимум (`"+bot.getConfig().getMaxTime()+"`)")).queue();
                 }
                 else
                 {
                     m.editMessage(FormatUtil.filter(event.getClient().getSuccess()+" Знайдено "
-                            +(playlist.getName()==null?"a playlist":"playlist **"+playlist.getName()+"**")+" with `"
-                            + playlist.getTracks().size()+"` entries; added to the queue!"
+                            +(playlist.getName()==null?"плейлист":"плейлист **"+playlist.getName()+"**")+" з `"
+                            + playlist.getTracks().size()+"` записи; додано до черги!"
                             + (count<playlist.getTracks().size() ? "\n"+event.getClient().getWarning()+" Треки, що перевищують максимально допустиму тривалість (`"
-                            + bot.getConfig().getMaxTime()+"`) have been omitted." : ""))).queue();
+                            + bot.getConfig().getMaxTime()+"`) було пропущено." : ""))).queue();
                 }
             }
         }
@@ -239,10 +239,10 @@ public class PlayCmd extends MusicCommand
             Playlist playlist = bot.getPlaylistLoader().getPlaylist(event.getArgs());
             if(playlist==null)
             {
-                event.replyError("I could not find `"+event.getArgs()+".txt` in the Playlists folder.");
+                event.replyError("Я не зміг знайти `"+event.getArgs()+".txt` у папці Playlists.");
                 return;
             }
-            event.getChannel().sendMessage(loadingEmoji+" Loading playlist **"+event.getArgs()+"**... ("+playlist.getItems().size()+" items)").queue(m -> 
+            event.getChannel().sendMessage(loadingEmoji+" Завантаження плейлиста **"+event.getArgs()+"**... ("+playlist.getItems().size()+" items)").queue(m -> 
             {
                 AudioHandler handler = (AudioHandler)event.getGuild().getAudioManager().getSendingHandler();
                 playlist.loadTracks(bot.getPlayerManager(), (at)->handler.addTrack(new QueuedTrack(at, RequestMetadata.fromResultHandler(at, event))), () -> {
