@@ -7,7 +7,7 @@
 [![Release](https://img.shields.io/github/release/jagrosh/MusicBot.svg)](https://github.com/MaximBayer/MusicBot_UA/releases)
 [![License](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/MaximBayer/MusicBot_UA/blob/bayer/LICENSE)
 [![Discord](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jagrosh/MusicBot/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jagrosh/MusicBot/tree/master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jagrosh/MusicBot/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/MaximBayer/JMusicBot_UKR)
 [![Build and Test](https://github.com/jagrosh/MusicBot/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/MaximBayer/JMusicBot_UKR/actions/workflows/build-and-test.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/jagrosh/musicbot/badge)](https://www.codefactor.io/repository/github/maximbayer/jmusicbot_ukr)
 
