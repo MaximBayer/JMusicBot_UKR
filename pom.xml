@@ -60,11 +60,7 @@
         <dependency>
             <groupId>dev.lavalink.youtube</groupId>
             <artifactId>common</artifactId>
-<<<<<<< HEAD
             <version>1.11.3</version>
-=======
-            <version>1.5.2</version>
->>>>>>> f1a9b959d70bf71464153c650a71b6dff79dd088
         </dependency>
 	<dependency>
 	    <groupId>com.github.jagrosh</groupId>
