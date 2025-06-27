@@ -209,7 +209,7 @@ public class PlayCmd extends MusicCommand
         public void loadFailed(FriendlyException throwable)
         {
             if(throwable.severity==Severity.COMMON)
-                m.editMessage(event.getClient().getError()+" Помилка завантаження: "+throwable.getMessage()).queue();
+                m.editMessage(event.getClient().getError()+" Це відео недоступне через геоблокування: "+throwable.getMessage()).queue();
             else
                 m.editMessage(event.getClient().getError()+" Помилка завантаження треку.").queue();
         }
